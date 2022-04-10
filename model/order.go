@@ -1,19 +1,21 @@
 package model
 
 type Order struct {
-	OrderId      int    `db:"order_id"`
-	CustomerName string `db:"customer_name"`
-	Price        int    `db:"price"`
-	TableNumber  int    `db:"table_number"`
-	Payment      string `db:"payment"`
+	OrderId     int    `db:"order_id"`
+	CustomerId  int    `db:"id_customer"`
+	Total       int    `db:"total"`
+	TableNumber int    `db:"id_meja"`
+	Payment     string `db:"payment"`
+	Employee    string `db:"id_karyawan"`
 }
 
-func NewOrder(id int, customer string, price int, table int, payment string) Order {
+func NewOrder(orderId, customerId, total, tableNumber int, payment, employee string) Order {
 	return Order{
-		OrderId:      id,
-		CustomerName: customer,
-		Price:        price,
-		TableNumber:  table,
-		Payment:      payment,
+		OrderId:     orderId,
+		CustomerId:  customerId,
+		Total:       total,
+		TableNumber: tableNumber,
+		Payment:     payment,
+		Employee:    employee,
 	}
 }
