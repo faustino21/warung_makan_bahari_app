@@ -25,6 +25,7 @@ func (t *tableUseCase) GetAllTable(page int) (*[]model.Table, error) {
 	}
 	return table, nil
 }
+
 func NewTableUseCase(repo repository.TableRepo) TableUseCase {
 	return &tableUseCase{
 		repo: repo,
