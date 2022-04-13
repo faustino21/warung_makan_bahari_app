@@ -28,6 +28,7 @@ func (a *appServer) v1() {
 	orderRoute := a.r.Group("/api")
 	api.TableApiRoute(orderRoute, a.cfg.UseCaseManager.TableUseCase())
 	api.MenuApiRoute(orderRoute, a.cfg.UseCaseManager.MenuUseCase())
+	api.OrderApiRoute(orderRoute, a.cfg.UseCaseManager.OrderUseCase())
 }
 
 func (a appServer) Run() {

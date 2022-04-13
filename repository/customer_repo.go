@@ -8,10 +8,23 @@ import (
 
 type CustomerRepo interface {
 	InsertCustomer(customer string) error
+	CountCustomer() (int, error)
 }
 
 type customerRepo struct {
 	db *sqlx.DB
+}
+
+func (c *customerRepo) CountCustomer() (int, error) {
+	funcName := "CustomerRepo.CountCustomer"
+	var result int
+
+	err := c.db.Get(&result, "SELECT COUNT(customer_id) FROM customers")
+	if err != nil {
+		logger.Log.Error().Msgf(funcName+" : %w", err)
+		return 0, fmt.Errorf(funcName+" :%w", err)
+	}
+	return result, nil
 }
 
 func (c *customerRepo) InsertCustomer(customer string) error {
